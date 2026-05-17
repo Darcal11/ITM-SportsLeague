@@ -28,6 +28,7 @@ public class StandingsController : ControllerBase
         }
     }
 
+
     [HttpGet("stats/scorers")]
     public async Task<ActionResult> GetTopScorers([FromQuery] int tournamentId)
     {
