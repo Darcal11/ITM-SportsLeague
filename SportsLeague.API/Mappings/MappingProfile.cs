@@ -77,5 +77,20 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.PlayerName,
                 opt => opt.MapFrom(src =>
                     src.Player.FirstName + " " + src.Player.LastName));
+
+
+        // MatchLineup mappings
+
+        CreateMap<CreateMatchLineupDto, MatchLineup>();
+
+        CreateMap<MatchLineup, MatchLineupDto>()
+            .ForMember(
+                dest => dest.PlayerName,
+                opt => opt.MapFrom(src =>
+                    src.Player.FirstName + " " + src.Player.LastName))
+            .ForMember(
+                dest => dest.TeamName,
+                opt => opt.MapFrom(src =>
+                    src.Player.Team != null ? src.Player.Team.Name : string.Empty));
     }
 }
